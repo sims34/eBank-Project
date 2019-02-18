@@ -29,7 +29,7 @@ public class MonetiqueController {
     @GetMapping("{idCarte}")
     public CheckMonetiqueResponse getCarteCB(@PathVariable("idCarte") UUID idCarte) {
         CarteBleu getCB = monetiqueService.getCarteBleu(idCarte);
-        
+
         return new CheckMonetiqueResponse(getCB.isValid, getCB.message);
     }
 }
