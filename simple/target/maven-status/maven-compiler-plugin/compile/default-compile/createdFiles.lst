@@ -1,0 +1,5 @@
+org\cnam\simple\controller\MonetiqueController.class
+org\cnam\simple\service\MonetiqueService.class
+org\cnam\simple\model\CarteBleuModel.class
+org\cnam\simple\dto\MonetiqueDto.class
+org\cnam\simple\repository\CarteBleuRepository.class

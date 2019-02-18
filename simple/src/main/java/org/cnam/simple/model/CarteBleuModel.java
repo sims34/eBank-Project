@@ -1,37 +1,61 @@
 package org.cnam.simple.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jdk.internal.org.objectweb.asm.commons.RemappingAnnotationAdapter;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 @Entity
 @Table(name="CarteBleu")
 public class CarteBleuModel {
 
-    private Long idCompte;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
+    private Long id;
+
+    @Column(name ="idCarteBleu")
     private UUID idCarteBleu;
-    private String mdp;
-    private Date create;
-    private Date expire;
+
+    @Column(name ="idCompte")
+    private UUID idCompte;
+
+    @Column(name ="mdp")
+    private int mdp;
+    @Column(name ="create")
+    private String create;
+    @Column(name ="expire")
+    private String expire;
 
     public CarteBleuModel() {
     }
 
-    public CarteBleuModel(Long idCompte, String mdp, Date create, Date expire) {
+    public CarteBleuModel(UUID idCompte) {
+        this.id= this.setId();
         this.idCompte = idCompte;
         this.idCarteBleu = this.setIdCarteBleu();
-        this.mdp = mdp;
-        this.create = create;
-        this.expire = expire;
+        this.mdp = this.setMdp();
+        this.create = this.setCreate();
+        this.expire = this.setExpire();
     }
 
-    public Long getIdCompte() {
+    public Long getId() {
+        return id;
+    }
+    public Long setId() {
+        return new Long(1234423132);
+    }
+
+    public UUID getIdCompte() {
         return idCompte;
     }
 
-    public void setIdCompte(Long idCompte) {
+    public void setIdCompte(UUID idCompte) {
         this.idCompte = idCompte;
     }
 
@@ -43,27 +67,28 @@ public class CarteBleuModel {
         return this.idCarteBleu = UUID.randomUUID();
     }
 
-    public String getMdp() {
+    public int getMdp() {
         return mdp;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public int setMdp() {
+        int randomNumber = new Random().nextInt(9000) + 1000;
+        return randomNumber;
     }
 
-    public Date getCreate() {
+    public String getCreate() {
         return create;
     }
 
-    public void setCreate(Date create) {
-        this.create = create;
+    public String setCreate() {
+        return new String("08/09/2019");
     }
 
-    public Date getExpire() {
+    public String getExpire() {
         return expire;
     }
 
-    public void setExpire(Date expire) {
-        this.expire = expire;
+    public String setExpire() {
+        return new String("09/21");
     }
 }

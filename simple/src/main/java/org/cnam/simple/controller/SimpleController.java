@@ -24,7 +24,7 @@ public class SimpleController {
     }
 
     @GetMapping ("/get/{id}")
-    @ResponseBody
+
     public SimpleDto getSimple(@PathVariable("id") Long id){
         Simple simple =  simpleService.getSimple(id);
 

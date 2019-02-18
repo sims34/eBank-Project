@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8095
 
 spring:
   datasource:
@@ -26,3 +26,8 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+application:
+  monetique:
+    url: http://localhost:8085
+    features:
+      create: /monetique/createCB
