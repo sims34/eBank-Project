@@ -23,10 +23,13 @@ public class MonetiqueController {
     public MonetiqueResponse createCB(@RequestBody MonetiqueRequest monetiqueRequest){
         CarteBleu createCB = monetiqueService.createNewCB(monetiqueRequest.idCompte);
 
-        return new MonetiqueResponse(createCB.idCarte, createCB.mdp);
+        return new MonetiqueResponse(   createCB.idCarte,
+                                        createCB.mdp,
+                                        createCB.dateExpire,
+                                        createCB.dateCreate);
     }
 
-    @GetMapping("{idCarte}")
+    @GetMapping("{idCarte}/pay")
     public CheckMonetiqueResponse getCarteCB(@PathVariable("idCarte") UUID idCarte) {
         CarteBleu getCB = monetiqueService.getCarteBleu(idCarte);
 
